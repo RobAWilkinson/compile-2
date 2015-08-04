@@ -3,7 +3,7 @@ var less = require('gulp-less');
 var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 var ts = require('gulp-typescript');
-
+var flow = require('gulp-flowtype');
 
 gulp.task('sass', function() {
     return gulp.src('sass/main.scss')
@@ -30,3 +30,15 @@ gulp.task('typescript', function () {
       }));
   return tsResult.js.pipe(gulp.dest('output/js'));
 });
+gulp.task('typecheck', function() {
+  return gulp.src('./flowtype/main.js')
+    .pipe(flow({
+        all: false,
+        weak: false,
+        declarations: './flowtype/declarations',
+        killFlow: false,
+        beep: true,
+        abort: false
+    }))
+    .pipe(gulp.dest('./output/js/'))
+})
