@@ -2,6 +2,8 @@
 
 This repo can help you play around with compile to languages without having to worry about setting up build tools.
 
+`npm install`
+
 I have 4 different gulp tasks set up
 
 1. `gulp sass`
